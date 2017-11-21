@@ -1,8 +1,6 @@
 // This file uses Sequelize to manage data manipulation
 // for all apropos http requests.
-// NOTE: This is the same file from last week's homework,
-// but with each route gutted and replaced with sequelize queries
-// where references to our outmoded ORM file once sat.
+
 var express = require("express");
 var router = express.Router();
 // edit model to match sequelize
@@ -15,6 +13,7 @@ router.get("/", function(req, res) {
   res.redirect("/scores");
 });
 
+
 // get route, edited to match sequelize
 router.get("/scores", function(req, res) {
   // replace old function with sequelize function
@@ -23,14 +22,16 @@ router.get("/scores", function(req, res) {
     .then(function(dbTrivia) {
       console.log(dbTrivia);
       // into the main index, updating the page
-      var hbsObject = { scores: dbTrivia };
-      return res.render("index", hbsObject);
+      //var hbsObject = { scores: dbTrivia };
+      //return res.render("index", hbsObject);
+      res.render("index")
     });
 });
 
+
 // post route to submit usename
 router.post("/username/create", function(req, res) {
-  // edited burger create to add in a burger_name
+  // edited trivia create to add in a username
   db.Trivia.create({
     username: req.body.username
   })
@@ -39,6 +40,22 @@ router.post("/username/create", function(req, res) {
       // log the result to our terminal/bash window
     console.log(dbTrivia);
       // redirect
+    res.redirect("/");
+  });
+});
+
+
+router.put("/score/update", function(req, res) {
+  // update one of the burgers
+  db.Trivia.update({
+    score: //???
+  },
+    {
+      where: {
+        id: req.body.id
+      }
+    }
+  ).then(function(dbTrivia) {
     res.redirect("/");
   });
 });

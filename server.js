@@ -16,11 +16,6 @@ app.use(bodyParser.urlencoded({
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
-var exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({
-  defaultLayout: "main"
-}));
-app.set("view engine", "handlebars");
 
 
 var routes = require("./controllers/trivia_controllers.js");
@@ -34,4 +29,5 @@ var port = process.env.PORT || 3000;
 db.sequelize.sync().then(function() {
   app.listen(port);
 });
+
 console.log(module.exports);
