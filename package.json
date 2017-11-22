@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/vidman22/project_trivia/issues"
   },
-  "homepage": "https://github.com/vidman22/project_trivia#readme"
+  "homepage": "https://github.com/vidman22/project_trivia#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "method-override": "^2.3.10",
+    "mysql2": "^1.5.1",
+    "path": "^0.12.7",
+    "sequelize": "^4.22.11"
+  }
 }
