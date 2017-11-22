@@ -21,10 +21,15 @@ router.get("/scores", function(req, res) {
     // use promise method to pass the scores...
     .then(function(dbTrivia) {
       console.log(dbTrivia);
+
       // into the main index, updating the page
       //var hbsObject = { scores: dbTrivia };
       //return res.render("index", hbsObject);
-      res.render("index")
+      res.json(dbTrivia)
+    })
+
+    .catch(function(err) {
+      return err;
     });
 });
 
@@ -41,14 +46,18 @@ router.post("/username/create", function(req, res) {
     console.log(dbTrivia);
       // redirect
     res.redirect("/");
-  });
+  })
+
+    .catch(function(err) {
+      return err;
+    });
 });
 
 
 router.put("/score/update", function(req, res) {
   // update one of the burgers
   db.Trivia.update({
-    score: //???
+    score: 0//???
   },
     {
       where: {
@@ -57,7 +66,11 @@ router.put("/score/update", function(req, res) {
     }
   ).then(function(dbTrivia) {
     res.redirect("/");
-  });
+  })
+
+    .catch(function(err) {
+      return err;
+    });
 });
 
 

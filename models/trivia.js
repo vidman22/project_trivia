@@ -4,17 +4,20 @@
 module.exports = function(sequelize, DataTypes) {
 
   var Trivia = sequelize.define("Trivia", {
-    username: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING
+    },
+
     score: {
-      type: DataTypes.INT,
-      defaultValue: null
+      type: DataTypes.INTEGER
+    },
+
+    Dated: {
+      type: DataTypes.TIMESTAMP
     }
+    
   }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+    timestamps: false
   });
 
   return Trivia;
