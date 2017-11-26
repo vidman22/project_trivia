@@ -179,6 +179,7 @@ $(document).on("click", ".btn", function(e) {
 });  
 
 $(document).on("click", "#start", function() {
+  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>80</span> Seconds</h2>");
   game.loadQuestion();
 });
    
