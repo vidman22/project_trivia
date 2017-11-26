@@ -10,14 +10,8 @@ module.exports = function(sequelize, DataTypes) {
 
     score: {
       type: DataTypes.INTEGER
-    },
-
-    Dated: {
-      type: DataTypes.TIMESTAMP
     }
-    
-  }, {
-    timestamps: false
+
   });
 
   return Trivia;
