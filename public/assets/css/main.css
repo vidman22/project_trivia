@@ -1,0 +1,77 @@
+
+/*textarea {
+	height: 128px;
+}
+input:focus, textarea:focus {
+	border: 2px solid rgb(168, 88, 163);
+}
+input[type="submit"] {
+	background: rgb(2, 99, 174);
+	color: white;
+	padding: .2em .4em;
+	border: none;
+	font-size: 1em;
+	cursor: pointer;
+}*/
+
+
+select {
+	width: 328px;
+}
+select[multiple]{
+	height: 162px;
+}
+/*footer styles	*/
+
+#gallery {
+	height: 400px;
+	width: 681px;
+	background-color: #fff;
+
+}
+#options {
+	position: relative;
+}
+#navigation {
+	position: absolute;
+	top: 70px;
+}
+#toggle {
+	position: absolute;	
+	top: -360px;
+}
+
+.answerDiv {
+	text-align: center;
+}
+
+.questionDiv {
+	text-align: center;
+	font-size: 20px;
+}
+
+.btn {
+	margin: 5px;
+	color: white;
+	border-color: black;
+
+}
+#previous {
+	text-align: right;
+}
+.category {
+	border-style: solid;
+	margin-top: -60px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 46px;
+}
+
+input.submit_button {
+	border-style: solid;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 120px;
+    height: 50px;
+}
+
