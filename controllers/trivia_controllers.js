@@ -55,7 +55,7 @@ router.post("/username/create", function(req, res) {
 
 
 router.put("/score/update", function(req, res) {
-  // update one of the burgers
+  // update one of the scores
   db.Trivia.update({
     score: 0//???
   },
