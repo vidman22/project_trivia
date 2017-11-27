@@ -120,20 +120,6 @@ function shuffle(array) {
 };
   
 
-
-
-// var currentFig = "#fig" + inc;
-//               if (inc == 10) {
-//                 nextFig = "#fig1";
-//               } else {
-//                 nextFig = "#fig" + (inc + 1);
-//               }
-//               $(nextFig).addClass('showFig');
-//               $(currentFig).removeClass('showFig'); 
-//               inc++;
-//               if (inc == 11) { inc = 1; } 
-//             console.log(inc);
-
 $(document).one('click', 'figure', function() {
      var currentFig = $(this).attr('id');
      $(".col-4").hide();
@@ -272,7 +258,7 @@ $(document).one('click', 'figure', function() {
           panel.html("<h2>Out of Time!</h2>");
           panel.append("<h3>The Correct Answer was: " + questions[this.currentQuestion][0].correctAnswer);
        
-          setTimeout(game.results, 3 * 1000);
+          setTimeout(game.results, 2 * 1000);
           
           
         },
@@ -314,7 +300,7 @@ $(document).one('click', 'figure', function() {
             setTimeout(game.results, 1000);
           }
           else {
-            setTimeout(game.nextQuestion, 500);
+            setTimeout(game.nextQuestion, 750);
           }
         },
 
@@ -330,7 +316,7 @@ $(document).one('click', 'figure', function() {
             setTimeout(game.results, 1000);
           }
           else {
-            setTimeout(game.nextQuestion, 500);
+            setTimeout(game.nextQuestion, 750);
           }
         },
 
