@@ -1,4 +1,4 @@
-
+$(document).ready(function(){
 var score = 0;
 var countStartNumber = 80;
 var panel = $("#quiz-area");
@@ -68,14 +68,14 @@ console.log(questions);
 
            loadQuestion: function() {
              timer = setInterval(game.countdown, 1000);
-             panel.html(questions[this.currentQuestion][0].question);
+              panel.html("<h3>" + questions[this.currentQuestion][0].question + "</h3>");
               
               console.log("answers: " + questions[this.currentQuestion][0].answers);
               answers = shuffle(questions[this.currentQuestion][0].answers);	
               		// console.log("shuffled:" + answers);
 
               for (var i = 0; i < 4; i++) {
-              	panel.append("<button type='button' class='btn btn-primary'  name='one' data-name='" + answers[i] + "'>"+ answers[i] + "</button>");
+              	panel.append("<button type='button' class='btn btn-primary' id='question' name='one' data-name='" + answers[i] + "'>"+ answers[i] + "</button>");
               }
 
             },
@@ -174,7 +174,7 @@ $(document).on("click", "#start-over", function() {
   game.reset();
 });
 
-$(document).on("click", ".btn", function(e) {
+$(document).on("click", "#question", function(e) {
   game.clicked(e);
 });  
 
@@ -182,4 +182,4 @@ $(document).on("click", "#start", function() {
   $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>80</span> Seconds</h2>");
   game.loadQuestion();
 });
-   
+});

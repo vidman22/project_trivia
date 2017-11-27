@@ -1,9 +1,17 @@
+// $(document).ready(function(){
+
 var transformProp = Modernizr.prefixed('transform');
 
 
 var questions = [];
 var score = 0;
+var countStartNumber = 50;
+var panel = $("#quiz-area");
+var questions = [];
 
+$("#start").hide();
+
+// $(".category").html('<b>Pick a Category Above</b>');
 function shuffle(array) {
                 var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -22,26 +30,6 @@ function shuffle(array) {
 
                 return array;
               }
-
-   
-
-function getValue() {
-
-    console.log('clicked');
-  }
-
-$(document).on('click', '.btn', function() {
-     var userInput = $(this).val(); 
-    console.log(userInput);
-      for (i = 0; i < answers.length; i++) { 
-      if (userInput == answers[i]) {
-        score ++;
-        console.log("answer: " + answers[i]);
-      }
-    }
-      
-      console.log("score: " + score);
-});
 
   
     function Carousel3D ( el ) {
@@ -148,7 +136,9 @@ $(document).on('click', '.btn', function() {
 
 $(document).one('click', 'figure', function() {
      var currentFig = $(this).attr('id');
-     $(".col-2").hide();
+     $(".col-4").hide();
+     $("#start").show();
+
      console.log(currentFig); 
        
 
@@ -187,7 +177,7 @@ $(document).one('click', 'figure', function() {
               break;
               // politics
               case "fig9":
-              url = "amount=31&category=9";
+              url = "amount=31&category=10";
               break;
               // science
               case "fig10":
@@ -214,6 +204,8 @@ $(document).one('click', 'figure', function() {
        }];
 
        questions.push(question);
+
+
        $(".category").empty();
        if (currentFig === "fig1") {
         var category = "Any";
@@ -222,16 +214,150 @@ $(document).one('click', 'figure', function() {
         }
           console.log(category);
           $(".category").html('<b>'+ category + '</b>');
-       
-      answers = shuffle(questions[i][0].answers);
 
-      $(".question" + i).append(questions[i][0].question);
+      // $(".question" + i).append(questions[i][0].question);
 
-      for (var j = 0; j < 4; j++) {
-      $(".answers" + i).append("<button type='button' class='btn btn-primary'  name='one' data-name='" + answers[j] + "'>"+ answers[j] + "</button>");
-              }
+      // for (var j = 0; j < 4; j++) {
+      // $(".answers" + i).append("<button type='button' class='btn btn-primary'  name='one' data-name='" + answers[j] + "'>"+ answers[j] + "</button>");
+      //         }
     }
+    var timer;
 
+       var game = {
+            questions: questions,
+            currentQuestion: 0,
+            counter: countStartNumber,
+            correct: 0,
+            incorrect: 0,
+
+           countdown: function() {
+             game.counter--;
+             $("#counter-number").html(game.counter);
+             if (game.counter === 0) {
+             console.log("Time up");
+             game.timeUp();
+                  }
+            },
+
+           loadQuestion: function() {
+             timer = setInterval(game.countdown, 1000);
+             panel.html("<h3>" + questions[this.currentQuestion][0].question + "</h3>");
+             console.log(questions);
+
+              
+              console.log("answers: " + questions[this.currentQuestion][0].answers);
+              answers = shuffle(questions[this.currentQuestion][0].answers);  
+                  // console.log("shuffled:" + answers);
+
+              for (var i = 0; i < 4; i++) {
+                panel.append("<button type='button' class='btn btn-primary' id='question' name='one' data-name='" + answers[i] + "'>"+ answers[i] + "</button>");
+              }
+
+            },
+
+           nextQuestion: function() {
+      
+            $("#counter-number").html(game.counter);
+            game.currentQuestion++;
+            console.log(game.currentQuestion);
+            game.loadQuestion();
+        },
+
+         timeUp: function() {
+
+          clearInterval(timer);
+
+          $("#counter-number").html(game.counter);
+
+          panel.html("<h2>Out of Time!</h2>");
+          panel.append("<h3>The Correct Answer was: " + questions[this.currentQuestion][0].correctAnswer);
+       
+          setTimeout(game.results, 3 * 1000);
+          
+          
+        },
+
+        results: function() {
+
+          clearInterval(timer);
+
+          panel.html("<h2>Your Score</h2>");
+
+          $("#counter-number").html(game.counter);
+
+          panel.append("<h3>Correct Answers: " + game.correct + "</h3>");
+          panel.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
+          panel.append("<br><button type='button' class='btn btn-lg btn-primary' id='start-over'>Start Over</button>");
+        },
+
+        clicked: function(e) {
+          clearInterval(timer);
+          if ($(e.target).attr("data-name") === questions[this.currentQuestion][0].correctAnswer) {
+            this.answeredCorrectly();
+          }
+          else {
+            this.answeredIncorrectly();
+          }
+        },
+
+        answeredIncorrectly: function() {
+
+          game.incorrect++;
+
+          game.counter = game.counter;
+
+          panel.html("<h2>Nope!</h2>");
+          panel.append("<h3>The Correct Answer was: " + questions[this.currentQuestion][0].correctAnswer + "</h3>");
+         
+
+          if (game.currentQuestion === questions.length -1) {
+            setTimeout(game.results, 1000);
+          }
+          else {
+            setTimeout(game.nextQuestion, 500);
+          }
+        },
+
+        answeredCorrectly: function() {
+
+          game.counter = game.counter + 5;
+
+          game.correct++;
+
+          panel.html("<h2>Correct!</h2>");
+         
+          if (game.currentQuestion === questions.length - 1) {
+            setTimeout(game.results, 1000);
+          }
+          else {
+            setTimeout(game.nextQuestion, 500);
+          }
+        },
+
+        reset: function() {
+          // this.currentQuestion = 0;
+          // this.counter = countStartNumber;
+          // this.correct = 0;
+          // this.incorrect = 0;
+          // this.loadQuestion();
+          location.reload();
+        }
+};
+
+// CLICK EVENTS
+
+$(document).on("click", "#start-over", function() {
+  game.reset();
+});
+
+$(document).on("click", "#question", function(e) {
+  game.clicked(e);
+});  
+
+$(document).one("click", "#start", function() {
+  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>50</span> Seconds</h2>");
+  game.loadQuestion();
+});
       });
 });
  window.addEventListener( 'DOMContentLoaded', init, false);

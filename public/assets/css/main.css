@@ -67,6 +67,14 @@ select[multiple]{
     font-size: 46px;
 }
 
+.title {
+	border-style: solid;
+	margin-top: 60px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 46px;
+}
+
 input.submit_button {
 	border-style: solid;
 	margin-top: 20px;
@@ -75,3 +83,6 @@ input.submit_button {
     height: 50px;
 }
 
+.row {
+	text-align: center;
+}
