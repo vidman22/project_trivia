@@ -38,7 +38,8 @@ router.get("/scores", function(req, res) {
 router.post("/username/create", function(req, res) {
   // edited trivia create to add in a username
   db.Trivia.create({
-    username: req.body.username
+    username: req.body.username,
+    score: req.body.score
   })
     // pass the result of our call
   .then(function(dbTrivia) {
@@ -57,7 +58,7 @@ router.post("/username/create", function(req, res) {
 router.put("/score/update", function(req, res) {
   // update one of the scores
   db.Trivia.update({
-    score: 0//???
+    score: 0
   },
     {
       where: {
