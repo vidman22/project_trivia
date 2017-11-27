@@ -2,23 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>trivia test</title>
+    <title>Blitz Round</title>
 
     <!-- GreenSock -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script> -->
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
    <!--  <link rel="stylesheet" href="/assets/css/trivia_style.css" type="text/css"/> -->
 
-     <!-- Font -->
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     
+    <!-- css stylesheets -->
     <link href="assets/css/main.css" rel="stylesheet" media="screen, projection">
     <link href="assets/css/transitions.css" rel="stylesheet" media="screen, projection">
+    <!-- Modernizer -->
     <script type="text/javascript" src="assets/javascript/modernizr.2.5.3.min.js"></script>
     <script type="text/javascript" src="assets/javascript/utils.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- boostrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 
 
@@ -26,43 +34,129 @@
 
 </head>
 <body>
-    <div class="container">
-     
 
-        <div class="row">
-            <div class="col-5">
+
+
+    <div class="container">
+     <div class="row">
+            <div class="col-md-12">
+                <section class="spinner">
+                  <div id="carousel">
+                    <figure id="fig1"><img src="assets/images/png/any.png" class="showFig" width="174" height="174" value="1"></figure>
+                    
+                  <!--   <figure id="fig7"><img src="assets/images/png/knowledge.png" width="174" height="174" value="7"></figure>
+                    <figure id="fig8"><img src="assets/images/png/mythology.png" width="174" height="174" value="8"></figure>
+                    <figure id="fig9"><img src="assets/images/png/book.png" width="174" height="174" value="9"></figure> -->
+                     </div>
+                </section>
             </div>
-            <div class="col-2">
-                <input type="hidden" id="panel-count" value="10"/>
-                <button id="previous" data-increment="-1">Previous</button>
-                <button id="next" data-increment="1">Next</button>
-            </div>
-            <div class="col-5">
-                
-            </div>
-        </section>
-    </div>
+        </div>
+
 
     <div class="row">
             <div class="col-12">
-                <div class='category'>Blitz Round</div>
+                <div class='category'><b>Blitz Round<b></div>
             </div>
         </div> 
     
-    <div id="wrapper">
-      <h1>Totally Trivial Trivia!</h1>
-      <div id="sub-wrapper">
-        <div id="quiz-area">
-          <button id="start">Start</button>
+
+     <div class="row">
+     <div class="col-12">
+       <div id="sub-wrapper">
+         <div id="quiz-area">
+            <button type="button" id="start" class="btn btn-lg btn-primary"><h4>Press Start</h4></button>
         </div>
+       </div>
       </div>
     </div>
 
+<!-- Modal -->
+    <div id="resultsModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+            <h2 class="modal-title"><strong>Your Score: </strong></h2>
+            <h3 class="scores"></h3>
+          </div>
+          <div class="modal-body">
+            <form>
+                      <div class="form-group">
+                      <label for="InputUsername">UserName</label>
+                      <input type="username" class="form-control" id="InputUsername" placeholder="Username">
+                      </div>
 
+                      <button id = "submit" type="submit" class="btn btn-primary">Submit</button>
+              </form>
+
+       </div>
+     </div>
+   </div>
+ </div>
+
+<!-- Modal -->
+  <div id="scoresModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">HIGH SCORES</h4>
+        </div>
+        <div class="modal-body">
+          <div id="table-data"></div>
+          <table>
+            <tr>
+              <th>USER</th>
+              <th>SCORE</th>
+              <th>DATE</th>
+            </tr>
+            <tr>
+              <td>Alfred Smartman</td>
+              <td>872900</td>
+              <td>00/00/0000</td>
+            </tr>
+            <tr>
+              <td>Raphael Brainguy</td>
+              <td>487800</td>
+              <td>00/00/0000</td>
+            </tr>
+            <tr>
+              <td>Ernst Tripoli</td>
+              <td>333000</td>
+              <td>00/00/0000</td>
+            </tr>
+            <tr>
+              <td>TheMainMan</td>
+              <td>312300</td>
+              <td>00/00/0000</td>
+            </tr>
+            <tr>
+              <td>Trololol</td>
+              <td>275100</td>
+              <td>00/00/0000</td>
+            </tr>
+            <tr>
+              <td>Derp</td>
+              <td>100</td>
+              <td>00/00/0000</td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  
 
  <!-- jquery tags -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script type="text/javascript" src="assets/javascript/logic.js"></script>
 

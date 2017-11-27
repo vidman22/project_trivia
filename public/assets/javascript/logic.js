@@ -1,6 +1,6 @@
-
+$(document).ready(function(){
 var score = 0;
-var countStartNumber = 80;
+var countStartNumber = 3;
 var panel = $("#quiz-area");
 var questions = [];
 
@@ -68,14 +68,14 @@ console.log(questions);
 
            loadQuestion: function() {
              timer = setInterval(game.countdown, 1000);
-             panel.html(questions[this.currentQuestion][0].question);
+              panel.html("<h3>" + questions[this.currentQuestion][0].question + "</h3>");
               
               console.log("answers: " + questions[this.currentQuestion][0].answers);
               answers = shuffle(questions[this.currentQuestion][0].answers);	
               		// console.log("shuffled:" + answers);
 
               for (var i = 0; i < 4; i++) {
-              	panel.append("<button type='button' class='btn btn-primary'  name='one' data-name='" + answers[i] + "'>"+ answers[i] + "</button>");
+              	panel.append("<button type='button' class='btn btn-primary' id='question' name='one' data-name='" + answers[i] + "'>"+ answers[i] + "</button>");
               }
 
             },
@@ -96,23 +96,35 @@ console.log(questions);
 
 			    panel.html("<h2>Out of Time!</h2>");
 			    panel.append("<h3>The Correct Answer was: " + questions[this.currentQuestion][0].correctAnswer);
-			 
-			    setTimeout(game.results, 3 * 1000);
-			    
+
+			    $("#resultsModal").modal('toggle');
+			    $(".scores").html(game.correct*20);
+	    		
 			    
 			  },
 
 			  results: function() {
-
+			  	preventDefault();
+			  	var userData = {
+	    		username: $("#InputUsername").val(),
+	    		scores: game.correct*20
+	    	}
+	    		console.log(userData);
 			    clearInterval(timer);
+			    $("#scoresModal").modal('toggle');
 
-			    panel.html("<h2>Your Score</h2>");
+			    // AJAX post the data to the friends API.
+			    // var currentURL = window.location.origin;
 
-			    $("#counter-number").html(game.counter);
+	    	// 	setTimeout($.post(currentURL + "/username/create", userData, function(data){
+	    	// }), 4000);
 
-			    panel.append("<h3>Correct Answers: " + game.correct + "</h3>");
-			    panel.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
-			    panel.append("<br><button id='start-over'>Start Over?</button>");
+			    // $("#counter-number").html(game.counter);
+
+			    // panel.append("<h3>Correct Answers: " + game.correct*20 + "</h3>");
+			    // panel.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
+			    // panel.append("<br><button type='button' class='btn btn-lg btn-primary' id='start-over'>Start Over</button>");
+
 			  },
 
 			  clicked: function(e) {
@@ -139,7 +151,7 @@ console.log(questions);
 			      setTimeout(game.results, 1000);
 			    }
 			    else {
-			      setTimeout(game.nextQuestion, 500);
+			      setTimeout(game.nextQuestion, 750);
 			    }
 			  },
 
@@ -155,7 +167,7 @@ console.log(questions);
 			      setTimeout(game.results, 1000);
 			    }
 			    else {
-			      setTimeout(game.nextQuestion, 500);
+			      setTimeout(game.nextQuestion, 750);
 			    }
 			  },
 
@@ -174,7 +186,7 @@ $(document).on("click", "#start-over", function() {
   game.reset();
 });
 
-$(document).on("click", ".btn", function(e) {
+$(document).on("click", "#question", function(e) {
   game.clicked(e);
 });  
 
@@ -182,4 +194,8 @@ $(document).on("click", "#start", function() {
   $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>80</span> Seconds</h2>");
   game.loadQuestion();
 });
-   
+
+$(document).on("click", "#submit", function() {
+ game.results();
+});
+});
