@@ -17,17 +17,18 @@ app.use(bodyParser.urlencoded({
 // override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
 
-
 var routes = require("./controllers/trivia_controllers.js");
 app.use("/", routes);
 app.use("/update", routes);
 app.use("/create", routes);
 
+require("./routes/dbroutes.js")(app);
+require("./routes/htmlroutes.js")(app);
 
 // listen on port 3000
 var port = process.env.PORT || 3000;
 db.sequelize.sync().then(function() {
-	console.log("app is listening")
+	console.log("app is listening on PORT:" + port);
   app.listen(port);
 });
 

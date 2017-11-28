@@ -106,6 +106,8 @@ console.log(questions);
 			  },
 
 			  results: function() {
+
+
 				function getPosts(category) {
 			    
 			    $.get("/api/posts/" , function(data) {
@@ -118,6 +120,7 @@ console.log(questions);
 	    		username: name,
 	    		scores: game.correct*20
 	    	}
+
 	    		console.log(userData);
 			   //  clearInterval(timer);
 			    $("#scoresModal").modal('toggle');
@@ -207,5 +210,4 @@ $(document).on("click", "#submit", function(e) {
 	e.preventDefault();
 	game.results();
 	});
-
 });
