@@ -104,11 +104,12 @@ console.log(questions);
 			  },
 
 			  results: function() {
-			  	preventDefault();
+			  	//preventDefault();
 			  	var userData = {
-	    		username: $("#InputUsername").val(),
-	    		scores: game.correct*20
-	    	}
+		    		username: $("#InputUsername").val(),
+		    		scores: game.correct*20
+		    	}
+		    	console.log("working 2")
 	    		console.log(userData);
 			    clearInterval(timer);
 			    $("#scoresModal").modal('toggle');
@@ -196,6 +197,7 @@ $(document).on("click", "#start", function() {
 });
 
 $(document).on("click", "#submit", function() {
+	console.log("working 1");
  game.results();
 });
 });
