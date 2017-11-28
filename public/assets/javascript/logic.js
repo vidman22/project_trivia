@@ -49,6 +49,7 @@ console.log(questions);
 
 
        var timer;
+       var scores;
 
        var game = {
             questions: questions,
@@ -97,39 +98,39 @@ console.log(questions);
 			    panel.html("<h2>Out of Time!</h2>");
 			    panel.append("<h3>The Correct Answer was: " + questions[this.currentQuestion][0].correctAnswer);
 
-			    $("#stack1").modal('toggle');
-			      // preventDefault();
-			 //    
+			    $("#resultModal").modal('toggle');
+			      // preventDefault();  
 			    $(".scores").html(game.correct*20);
-	    		
 			    
 			  },
 
 			  results: function() {
 
 
+
 				function getPosts(category) {
+
 			    
-			    $.get("/api/posts/" , function(data) {
-			      console.log("Posts", data);
-			      posts = data;
-			      
 			  	var name = $("#InputUsername").val();
 
 			  	var userData = {
 	    		username: name,
 	    		scores: game.correct*20
-	    	}
 
+	    		}
 	    		console.log(userData);
-			   //  clearInterval(timer);
-			    $("#scoresModal").modal('toggle');
+			    clearInterval(timer);
+			    
 
 			    // AJAX post the data to the friends API.
 			    var currentURL = window.location.origin;
 
-	    	// 	setTimeout($.post(currentURL + "/username/create", userData, function(data){
-	    	// }), 4000);
+
+	    		$.post(currentURL + "/username/create", userData, function(data){
+	    		});
+
+	    		$("#scoresModal").modal('toggle');
+
 
 			    // $("#counter-number").html(game.counter);
 
@@ -138,6 +139,25 @@ console.log(questions);
 			    panel.append("<br><button type='button' class='btn btn-lg btn-primary' id='start-over'>Start Over</button>");
 
 			  },
+
+
+			  renderScores: function() {
+
+			  	$.get("/scores" , function(data) {
+			      console.log("Posts", data);
+			      scores = data;
+			    });
+
+			  	var newPostPanelBody = $("<div>");
+			    newPostPanelBody.addClass("panel-body");
+			    var newPostBody = $("<p>");
+			    newPostTitle.text(post.title + " ");
+			    newPostBody.text(post.body);
+
+
+
+			  },
+
 			  clicked: function(e) {
 			    clearInterval(timer);
 			    if ($(e.target).attr("data-name") === questions[this.currentQuestion][0].correctAnswer) {
