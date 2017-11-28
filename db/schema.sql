@@ -1,6 +1,5 @@
 CREATE DATABASE scoreboard;
 
-
 USE scoreboard;
 
 CREATE TABLE `scores` (
