@@ -10,21 +10,19 @@ var db = require("../models/");
 // get route -> index
 router.get("/", function(req, res) {
   // send us to the next get function instead.
-  res.redirect("/htmlroutes");
+  res.redirect("/index.html");
 });
 
 
 // get route, edited to match sequelize
 router.get("/scores", function(req, res) {
   // replace old function with sequelize function
-  db.Trivia.findAll()
+  db.Trivia.findAll({})
     // use promise method to pass the scores...
     .then(function(dbTrivia) {
       console.log(dbTrivia);
 
       // into the main index, updating the page
-      //var hbsObject = { scores: dbTrivia };
-      //return res.render("index", hbsObject);
       res.json(dbTrivia)
     })
 
@@ -34,7 +32,7 @@ router.get("/scores", function(req, res) {
 });
 
 
-// post route to submit usename
+// post route to submit username
 router.post("/username/create", function(req, res) {
   // edited trivia create to add in a username
   db.Trivia.create({
@@ -46,7 +44,7 @@ router.post("/username/create", function(req, res) {
       // log the result to our terminal/bash window
     console.log(dbTrivia);
       // redirect
-    //res.redirect("/");
+    res.end();
   })
 
     .catch(function(err) {
