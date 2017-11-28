@@ -7,7 +7,7 @@ var app = express();
 
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + "./public"));
+// app.use(express.static(__dirname + "./public"));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: false
@@ -19,9 +19,9 @@ app.use(methodOverride("_method"));
 
 var routes = require("./controllers/trivia_controllers.js");
 app.use("/", routes);
-app.use("/update", routes);
+app.use("/scores", routes);
 app.use("/create", routes);
-
+app.use(express.static("public"));
 require("./routes/dbroutes.js")(app);
 require("./routes/htmlroutes.js")(app);
 
