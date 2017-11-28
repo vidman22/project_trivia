@@ -70,3 +70,33 @@
 .no-csstransforms3d #toggle {
 	display: none;
 }
+.image {
+  opacity: 1;
+  transition: .2s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .2s ease;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.image:hover {
+  opacity: 0.9;
+}
+
+/*.container:hover .middle {
+  opacity: 1;
+}*/
+
+
+.text {
+  color: black;
+  font-size: 22px;
+  margin-top: 230px;
+}

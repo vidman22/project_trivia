@@ -97,34 +97,45 @@ console.log(questions);
 			    panel.html("<h2>Out of Time!</h2>");
 			    panel.append("<h3>The Correct Answer was: " + questions[this.currentQuestion][0].correctAnswer);
 
-			    $("#resultsModal").modal('toggle');
+			    $("#stack1").modal('toggle');
+			      // preventDefault();
+			 //    
 			    $(".scores").html(game.correct*20);
 	    		
 			    
 			  },
 
 			  results: function() {
-			  	//preventDefault();
+
+
+				function getPosts(category) {
+			    
+			    $.get("/api/posts/" , function(data) {
+			      console.log("Posts", data);
+			      posts = data;
+			      
+			  	var name = $("#InputUsername").val();
+
 			  	var userData = {
-		    		username: $("#InputUsername").val(),
-		    		scores: game.correct*20
-		    	}
-		    	console.log("working 2")
+	    		username: name,
+	    		scores: game.correct*20
+	    	}
+
 	    		console.log(userData);
-			    clearInterval(timer);
+			   //  clearInterval(timer);
 			    $("#scoresModal").modal('toggle');
 
 			    // AJAX post the data to the friends API.
-			    // var currentURL = window.location.origin;
+			    var currentURL = window.location.origin;
 
-	    	// 	setTimeout($.post(currentURL + "/username/create", userData, function(data){
-	    	// }), 4000);
+	    		setTimeout($.post(currentURL + "/username/create", userData, function(data){
+	    	}), 4000);
 
 			    // $("#counter-number").html(game.counter);
 
 			    // panel.append("<h3>Correct Answers: " + game.correct*20 + "</h3>");
 			    // panel.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
-			    // panel.append("<br><button type='button' class='btn btn-lg btn-primary' id='start-over'>Start Over</button>");
+			    panel.append("<br><button type='button' class='btn btn-lg btn-primary' id='start-over'>Start Over</button>");
 
 			  },
 
@@ -195,9 +206,8 @@ $(document).on("click", "#start", function() {
   $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>80</span> Seconds</h2>");
   game.loadQuestion();
 });
-
-$(document).on("click", "#submit", function() {
-	console.log("working 1");
- game.results();
-});
+$(document).on("click", "#submit", function(e) {
+	e.preventDefault();
+	game.results();
+	});
 });
