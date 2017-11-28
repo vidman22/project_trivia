@@ -128,8 +128,8 @@ console.log(questions);
 			    // AJAX post the data to the friends API.
 			    var currentURL = window.location.origin;
 
-	    		setTimeout($.post(currentURL + "/username/create", userData, function(data){
-	    	}), 4000);
+	    	// 	setTimeout($.post(currentURL + "/username/create", userData, function(data){
+	    	// }), 4000);
 
 			    // $("#counter-number").html(game.counter);
 
@@ -138,7 +138,6 @@ console.log(questions);
 			    panel.append("<br><button type='button' class='btn btn-lg btn-primary' id='start-over'>Start Over</button>");
 
 			  },
-
 			  clicked: function(e) {
 			    clearInterval(timer);
 			    if ($(e.target).attr("data-name") === questions[this.currentQuestion][0].correctAnswer) {
