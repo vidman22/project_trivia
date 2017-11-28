@@ -105,12 +105,18 @@ console.log(questions);
 			  },
 
 			  results: function() {
+
+
+
+				function getPosts(category) {
+
 			    
 			  	var name = $("#InputUsername").val();
 
 			  	var userData = {
 	    		username: name,
 	    		scores: game.correct*20
+
 	    		}
 	    		console.log(userData);
 			    clearInterval(timer);
@@ -119,10 +125,12 @@ console.log(questions);
 			    // AJAX post the data to the friends API.
 			    var currentURL = window.location.origin;
 
+
 	    		$.post(currentURL + "/username/create", userData, function(data){
 	    		});
 
 	    		$("#scoresModal").modal('toggle');
+
 
 			    // $("#counter-number").html(game.counter);
 
@@ -131,6 +139,7 @@ console.log(questions);
 			    panel.append("<br><button type='button' class='btn btn-lg btn-primary' id='start-over'>Start Over</button>");
 
 			  },
+
 
 			  renderScores: function() {
 
@@ -220,5 +229,4 @@ $(document).on("click", "#submit", function(e) {
 	e.preventDefault();
 	game.results();
 	});
-
 });

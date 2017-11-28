@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>trivia test</title>
     <title>Category Round</title>
+
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -22,11 +24,12 @@
     
 
 </head>
-<body>
+<body class="gradient">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                 <h1><b>Spin and Pick<b></h1>
+                <br>
+                 <h1><b>Spin the Wheel<b></h1>
             </div>
         </div>
 
@@ -79,6 +82,8 @@
                 <button type="button" class="btn btn-lg btn-primary" id="next" data-increment="1">Next</button>
 
             </div>
+            <br>
+            <br>
             <div class="col-4">
                 
             </div>
@@ -90,13 +95,16 @@
                 <div class='category'></div>
             </div>
         </div>
-
-
+    <br>
+    <div class="row">
+        <div class="col-12">
+      <div id="sub-wrapper">
+        <div id="quiz-area">
     <div class="row">
      <div class="col-12">
        <div id="sub-wrapper">
          <div id="quiz-area">
-            <button type="button" id="start" class="btn btn-lg btn-primary"><h4>Press Start</h4></button>
+            <button type="button" id="start" class="btn btn-lg btn-primary"><h4>Start</h4></button>
         </div>
        </div>
       </div>
@@ -141,6 +149,7 @@
             }
             );  
     });
+
     </script>
 
 </body>
