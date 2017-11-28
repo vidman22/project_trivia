@@ -106,8 +106,14 @@ console.log(questions);
 			  },
 
 			  results: function() {
+				function getPosts(category) {
+			    
+			    $.get("/api/posts/" , function(data) {
+			      console.log("Posts", data);
+			      posts = data;
+			      
 			  	var name = $("#InputUsername").val();
-			  	
+
 			  	var userData = {
 	    		username: name,
 	    		scores: game.correct*20
