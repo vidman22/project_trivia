@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>trivia test</title>
-    <title>Category Round</title>
+    <title>Category</title>
     <!-- GreenSock -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 
@@ -30,7 +29,7 @@
         <div class="row">
             <div class="col-md-12">
                 <br>
-                 <h1><b>Spin the Wheel<b></h1>
+                 <h1><b>Spin to Win!</b></h1>
             </div>
         </div>
 
@@ -77,9 +76,9 @@
         <div class="row">
             <div class="col-4">
             </div>
-            <div class="col-4">
+            <div class="col-4 start_button">
                 <input type="hidden" id="panel-count" value="10"/>
-                <button type="button" class="btn btn-lg btn-primary" id="previous" data-increment="-1">Prev</button>
+                <button type="button" class="btn btn-lg btn-primary" id="previous" data-increment="-1">Back</button><span>&nbsp;</span>
                 <button type="button" class="btn btn-lg btn-primary" id="next" data-increment="1">Next</button>
 
             </div>
@@ -92,8 +91,10 @@
     </div>
 
     <div class="row">
-            <div class="col-12">
+        <div class="col-2"></div>
+            <div class="col-8">
                 <div class='category'></div>
+                <div class="col-2"></div>
             </div>
         </div>
     <br>

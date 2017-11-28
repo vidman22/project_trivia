@@ -51,12 +51,19 @@ select[multiple]{
 }
 
 .btn {
-	margin: 5px;
-	color: white;
-	border-color: black;
+	margin-top: 10px;
+	color: #fff;
+	letter-spacing: 2px;
+	border-style: solid;
 	background-color: #33bbff;
-
+	border-color: #33bbff;
 }
+
+.btn:hover {
+	color: black;
+	background-color: #00aaff;
+}
+
 #previous {
 	text-align: right;
 }
@@ -86,4 +93,13 @@ input.submit_button {
 
 .row {
 	text-align: center;
+}
+
+h1 {
+    text-shadow: 2px 2px white;
+	font-size: 60px;
+}
+
+.start_button {
+	margin-bottom: 90px;
 }
