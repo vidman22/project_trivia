@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>trivia test</title>
+
+    <!-- GreenSock -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+   <!--  <link rel="stylesheet" href="/assets/css/trivia_style.css" type="text/css"/> -->
+
+     <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    
+    <link href="assets/css/main.css" rel="stylesheet" media="screen, projection">
+    <link href="assets/css/transitions.css" rel="stylesheet" media="screen, projection">
+    <script type="text/javascript" src="assets/javascript/modernizr.2.5.3.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/utils.js"></script>
+
+
+
+    
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                 <h1><b>Spin and Pick<b></h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <section class="spinner">
+                  <div id="carousel">
+                    <figure id="fig1"><img src="assets/images/png/any.png" alt="Random" title="Random" class="showFig image" width="174" height="174" value="1"><div class="middle">
+                    <div class="text">Random</div>
+                    </div></figure>
+                    <figure id="fig2"><img src="assets/images/png/sports.png" alt="Sports" title="Sports"
+                    class="image" width="174" height="174" value="2"><div class="middle">
+                    <div class="text">Sports</div>
+                    </div></figure>
+                    <figure id="fig3"><img src="assets/images/png/art.png" alt="Art" title="Art" class="image" width="174" height="174" value="3"><div class="middle">
+                    <div class="text">Art</div>
+                    </div></figure>
+
+                    <figure id="fig4"><img src="assets/images/png/entertainment.png" alt="Entertainment" title="Entertainment" class="image" width="174" height="174" value="4"><div class="middle">
+                    <div class="text">Entertainment</div>
+                    </div></figure>
+                    <figure id="fig5"><img src="assets/images/png/geography.png" alt="Geography"  title="Geography" class="image" width="174" height="174" value="5"><div class="middle">
+                    <div class="text">Geography</div>
+                    </div></figure>
+                    <figure id="fig6"><img src="assets/images/png/history.png" alt="History" title="History" class="image" width="174" height="174" value="6"><div class="middle">
+                    <div class="text">History</div>
+                    </div></figure>
+                    <figure id="fig7"><img src="assets/images/png/knowledge.png" alt="General Knowledge" title="General Knowledge" class="image" width="174" height="174" value="7"><div class="middle">
+                    <div class="text">General</div>
+                    </div></figure>
+                    <figure id="fig8"><img src="assets/images/png/mythology.png" alt="Mythology" title="Mythology" class="image" width="174" height="174" value="8"><div class="middle">
+                    <div class="text">Mythology</div>
+                    </div></figure>
+                    <figure id="fig9"><img src="assets/images/png/book.png" alt="Books" title="Books" class="image" width="174" height="174" value="9"><div class="middle">
+                    <div class="text">Books</div>
+                    </div></figure>
+                    <figure id="fig10"><img src="assets/images/png/science.png" alt="Science" title="Science" class="image" width="174" height="174" value="10"><div class="middle">
+                    <div class="text">Science</div>
+                    </div></figure>
+                  </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+                <input type="hidden" id="panel-count" value="10"/>
+                <button type="button" class="btn btn-lg btn-primary" id="previous" data-increment="-1">Prev</button>
+                <button type="button" class="btn btn-lg btn-primary" id="next" data-increment="1">Next</button>
+
+            </div>
+            <br>
+            <br>
+            <div class="col-4">
+                
+            </div>
+        </section>
+    </div>
+
+    <div class="row">
+            <div class="col-12">
+                <div class='category'></div>
+            </div>
+        </div>
+
+    <br>
+    <div class="row">
+        <div class="col-12">
+      <div id="sub-wrapper">
+        <div id="quiz-area">
+            <button type="button" id="start" class="btn btn-lg btn-primary"><h4>Press Start</h4></button>
+        </div>
+       </div>
+      </div>
+    </div>
+
+
+
+
+
+ <!-- jquery tags -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="assets/javascript/gallery.js"></script>
+<script type="text/javascript">
+    var inc=1;
+    $(function () {
+            $('#next').click(
+                function () {
+                    var currentFig = "#fig" + inc;
+                    if (inc == 10) {
+                        nextFig = "#fig1";
+                    } else {
+                        nextFig = "#fig" + (inc + 1);
+                    }
+                    $(nextFig).addClass('showFig');
+                    $(currentFig).removeClass('showFig');   
+                    inc++;
+                    if (inc == 11) { inc = 1; } 
+                }
+            );  
+            $('#previous').click(
+                function () {
+                    var currentFig = "#fig" + inc;
+                    if (inc == 1) {
+                        prevFig = "#fig10";
+                    } else {
+                        prevFig = "#fig" + (inc - 1);
+                    }
+                    $(prevFig).addClass('showFig');
+                    $(currentFig).removeClass('showFig');   
+                    inc--;
+                    if (inc == 0) { inc = 10; } 
+            }
+            );  
+    });
+
+    </script>
+
+</body>
+
+</html>
