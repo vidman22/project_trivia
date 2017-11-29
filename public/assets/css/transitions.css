@@ -102,5 +102,8 @@
       	#99ddff, #e6f7ff
 
     );
-     min-height: 750px;
+     /*min-height: 750px;*/
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
 }
