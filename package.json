@@ -19,8 +19,10 @@
   "homepage": "https://github.com/vidman22/project_trivia#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
     "express": "^4.16.2",
     "method-override": "^2.3.10",
+    "mocha": "^4.0.1",
     "mysql2": "^1.5.1",
     "path": "^0.12.7",
     "sequelize": "^4.23.1"
