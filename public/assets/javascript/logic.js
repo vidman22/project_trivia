@@ -1,6 +1,6 @@
 $(document).ready(function(){
 var score = 0;
-var countStartNumber = 5;
+var countStartNumber = 50;
 var panel = $("#quiz-area");
 var questions = [];
 
@@ -220,7 +220,7 @@ $(document).on("click", "#question", function(e) {
 });  
 
 $(document).on("click", "#start", function() {
-  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>80</span> Seconds</h2>");
+  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>50</span> Seconds</h2>");
   game.loadQuestion();
 });
 $(document).on("click", "#submit", function(e) {
