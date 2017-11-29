@@ -52,6 +52,7 @@ select[multiple]{
 
 .btn {
 	margin-top: 10px;
+	margin-left: 10px;
 	color: #fff;
 	letter-spacing: 2px;
 	border-style: solid;
