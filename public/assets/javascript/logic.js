@@ -1,6 +1,6 @@
 $(document).ready(function(){
 var score = 0;
-var countStartNumber = 3;
+var countStartNumber = 5;
 var panel = $("#quiz-area");
 var questions = [];
 
@@ -107,9 +107,6 @@ console.log(questions);
 			  results: function() {
 
 
-
-				function getPosts(category) {
-
 			    
 			  	var name = $("#InputUsername").val();
 
@@ -118,16 +115,17 @@ console.log(questions);
 	    		scores: game.correct*20
 
 	    		}
+
 	    		console.log(userData);
 			    clearInterval(timer);
 			    
 
 			    // AJAX post the data to the friends API.
-			    var currentURL = window.location.origin;
+			    // var currentURL = window.location.origin;
 
 
-	    		$.post(currentURL + "/username/create", userData, function(data){
-	    		});
+	    		// $.post(currentURL + "/username/create", userData, function(data){
+	    		// });
 
 	    		$("#scoresModal").modal('toggle');
 
