@@ -1,6 +1,6 @@
 $(document).ready(function(){
 var score = 0;
-var countStartNumber = 5;
+var countStartNumber = 50;
 var panel = $("#quiz-area");
 var questions = [];
 
