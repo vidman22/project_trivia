@@ -60,6 +60,12 @@ select[multiple]{
 	border-color: #33bbff;
 }
 
+.btn-primary {
+	background-color: #33bbff;
+	border-color: #33bbff;
+	color: #fff;
+}
+
 .btn:hover {
 	color: black;
 	background-color: #00aaff;
@@ -103,4 +109,9 @@ h1 {
 
 .start_button {
 	margin-bottom: 90px;
+}
+
+.modal-header {
+	text-align: center;
+
 }
