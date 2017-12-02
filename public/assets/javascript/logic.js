@@ -1,6 +1,8 @@
+
+
 $(document).ready(function(){
 var score = 0;
-var countStartNumber = 50;
+var countStartNumber = 10;
 var panel = $("#quiz-area");
 var questions = [];
 
@@ -141,17 +143,34 @@ console.log(questions);
 
 			  renderScores: function() {
 
-			  	$.get("/scores" , function(data) {
-			      console.log("Posts", data);
-			      scores = data;
-			    });
+			$.ajax({
+				url: "/scores",
+				method: "GET"
+			}).done(function (scores) {
+				alert("successful score gather");
+				console.log(scores);
 
-			  	var newPostPanelBody = $("<div>");
-			    newPostPanelBody.addClass("panel-body");
-			    var newPostBody = $("<p>");
-			    newPostTitle.text(post.title + " ");
-			    newPostBody.text(post.body);
 
+
+				// var newPostPanelBody = $("<div>");
+				//  newPostPanelBody.addClass("panel-body");
+				//  var newPostBody = $("<p>");
+				//  newPostTitle.text(post.title + " ");
+				//  newPostBody.text(post.body);
+				//select table id
+
+				var table = function () {
+					var topplayers = 15;
+					for (let i = 0; i < topplayers; i++) {
+						$("#thescoretable").append("<tr><th>" + i + "</th><td>" + scores[i].username + "</td><td>" + scores[i].score + "</td></tr>");
+
+					};
+				};
+
+				table();
+			    //todo loop through scores, append tr , td with score.username, score.score
+				
+				});
 
 
 			  },
@@ -211,6 +230,8 @@ console.log(questions);
 
 // CLICK EVENTS
 
+
+
 $(document).on("click", "#start-over", function() {
   game.reset();
 });
@@ -224,7 +245,23 @@ $(document).on("click", "#start", function() {
   game.loadQuestion();
 });
 $(document).on("click", "#submit", function(e) {
-	e.preventDefault();
 	game.results();
-	});
+	var usernamefromform = $("#InputUsername").val();
+	var insertscore = game.correct * 20;
+
+	e.preventDefault();
+	 $.ajax({
+      url: "http://localhost:3000/username/create",
+       method: "POST",
+       data: {
+       	username: usernamefromform,
+       	score: insertscore
+       }
+
+     }).done(function(response) {
+        alert("success");
+      }
+	);
+   game.renderScores();
+});
 });
