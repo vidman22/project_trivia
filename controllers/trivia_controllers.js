@@ -34,6 +34,7 @@ router.get("/scores", function(req, res) {
 
 // post route to submit username
 router.post("/username/create", function(req, res) {
+  console.log(req);
   // edited trivia create to add in a username
   db.Trivia.create({
     username: req.body.username,
@@ -42,7 +43,7 @@ router.post("/username/create", function(req, res) {
     // pass the result of our call
   .then(function(dbTrivia) {
       // log the result to our terminal/bash window
-    console.log(dbTrivia);
+    //console.log(dbTrivia);
       // redirect
     res.end();
   })

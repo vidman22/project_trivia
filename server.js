@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+app.use(bodyParser.json());
+
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
@@ -27,6 +29,7 @@ require("./routes/htmlroutes.js")(app);
 
 // listen on port 3000
 var port = process.env.PORT || 3000;
+console.log(process.env.JAWSDB_URL)
 db.sequelize.sync().then(function() {
 	console.log("app is listening on PORT:" + port);
   app.listen(port);
