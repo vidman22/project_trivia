@@ -5,7 +5,7 @@ module.exports = function(app) {
 		port: 3306,
 	  host: "127.0.0.1",
 	  user: "root",
-	  password: "123shazam",
+	  password: "ewok1138",
 	  database: "scoreboard"
 	});
 

@@ -77,7 +77,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h2 class="modal-title"><strong>Your Score:</strong></h2>
-            <h3 class="scores"></h3>
+            <h3 class="scores" id="scoresid"></h3>
           </div>
           <div class="modal-body">
             <form>
@@ -110,42 +110,12 @@
         </div>
         <div class="modal-body">
           <div id="table-data"></div>
-          <table>
-            <tr>
-              <th>USER</th>
-              <th>SCORE</th>
-              <th>DATE</th>
-            </tr>
-            <tr>
-              <td>Alfred Smartman</td>
-              <td>872900</td>
-              <td>00/00/0000</td>
-            </tr>
-            <tr>
-              <td>Raphael Brainguy</td>
-              <td>487800</td>
-              <td>00/00/0000</td>
-            </tr>
-            <tr>
-              <td>Ernst Tripoli</td>
-              <td>333000</td>
-              <td>00/00/0000</td>
-            </tr>
-            <tr>
-              <td>TheMainMan</td>
-              <td>312300</td>
-              <td>00/00/0000</td>
-            </tr>
-            <tr>
-              <td>Trollolol</td>
-              <td>275100</td>
-              <td>00/00/0000</td>
-            </tr>
-            <tr>
-              <td>Derp</td>
-              <td>100</td>
-              <td>00/00/0000</td>
-            </tr>
+          <!--make a div with id to select and add to-->
+          <table id=thescoretable>
+          <!-- todo remove this and create this html in game.renderscores -->
+          <td>\username</td>
+          <td>score</td>
+          </tr>
           </table>
         </div>
         <div class="modal-footer">
