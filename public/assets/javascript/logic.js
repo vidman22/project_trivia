@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 var score = 0;
-var countStartNumber = 10;
+var countStartNumber = 50;
 var panel = $("#quiz-area");
 var questions = [];
 
@@ -251,7 +251,7 @@ $(document).on("click", "#submit", function(e) {
 
 	e.preventDefault();
 	 $.ajax({
-      url: "http://localhost:3000/username/create",
+      url: "http://young-sea-64938.herokuapp.com/username/create",
        method: "POST",
        data: {
        	username: usernamefromform,
