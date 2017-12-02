@@ -251,7 +251,7 @@ $(document).on("click", "#submit", function(e) {
 
 	e.preventDefault();
 	 $.ajax({
-      url: "http://young-sea-64938.herokuapp.com/username/create",
+      url: "/username/create",
        method: "POST",
        data: {
        	username: usernamefromform,
