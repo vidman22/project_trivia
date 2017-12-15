@@ -147,7 +147,7 @@ console.log(questions);
 				url: "/scores",
 				method: "GET"
 			}).done(function (scores) {
-				alert("successful score gather");
+				//alert("successful score gather");
 				console.log(scores);
 
 
@@ -259,7 +259,7 @@ $(document).on("click", "#submit", function(e) {
        }
 
      }).done(function(response) {
-        alert("success");
+        console.log("success");
       }
 	);
    game.renderScores();
